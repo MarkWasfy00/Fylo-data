@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+// font-family: 'Raleway', sans-serif; 400 700
+
+
+//Primary
+$Gradient1: hsl(6, 100%, 80%);
+// to
+$Gradient2:hsl(335, 100%, 65%);
+//Neutral
+$Pale-Blue: hsl(243, 100%, 93%);
+$Grayish-Blue: hsl(229, 7%, 55%);
+$Dark-Blue: hsl(228, 56%, 26%);
+$Very-Dark-Blue: hsl(229, 57%, 11%);
+
+// variables
+
+$gap: 20px;
+
+
+
+@mixin Flex-col($justify,$align) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+html{
+    font-size: 87.5%;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    position: relative;
+}
+
+
+
+
+main{
+    
+    @include Flex-col(center,center);
+    gap: $gap;
+    background-image: url(./images/bg-mobile.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.access-tools{
+    background-color: $Dark-Blue;
+    width: 90%;
+    height: 200px;
+    border-radius: 15px 100px 15px 15px;
+    @include Flex-col(center,flex-start);
+    gap: $gap;
+    padding: 50px;
+    animation-name: left-to-right;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    .info{
+        display: flex;
+        gap: $gap;
+        .box{
+            background-color: $Very-Dark-Blue;
+            height: 40px;
+            width: 40px;
+            border-radius: 10px;
+            padding: 25px;
+            @include Flex-col(center,center);
+            transition: 250ms;
+            transition-timing-function: ease-out;
+            &:hover{
+                background-color: whitesmoke;
+                cursor: pointer;
+            }
+            img{
+                height: 20px;
+            }
+        }
+    }
+}
+
+
+.limition {
+    width: 90%;
+    height: 200px;
+    background-color: $Dark-Blue;
+    border-radius: 15px;
+    @include Flex-col(flex-start,center);
+    gap: $gap;
+    padding: 40px 30px 0px;
+    position: relative;
+    animation-name: right-to-left;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    h4{
+        //align-self: center;
+        color: $Pale-Blue;
+        font-weight: 400;
+        span{
+            font-weight: 700;
+        }
+    }
+
+
+    .percentage{
+        background-color: #151e49;
+        width: 100%;
+        height: 20px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        
+        .percentage-back{
+            width: 75%;
+            height: 14px;
+            border-radius: inherit;
+            background-image: linear-gradient(to right, $Gradient1 ,$Gradient2);
+            margin-left: 3px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            
+
+            .percentage-back-scroll{
+                width: 10px;
+                height: 10px;
+                background-color: whitesmoke;
+                border-radius: 50%;
+                margin-right: 3px;
+            }
+        }
+
+    }
+
+
+    .gigs{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        color: $Pale-Blue;
+        font-weight: 700;
+    }
+
+    .quota{
+        background-color: whitesmoke;
+        height: 80px;
+        width: 190px;
+        position: absolute;
+        border-radius: 15px;
+        bottom: -40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1{
+            font-weight: 700;
+            font-size: 2.5rem;
+            span{
+                font-size: 1rem;
+                vertical-align: middle;
+                color: $Grayish-Blue;
+            }
+        }
+    }
+
+}
+
+
+
+@media (min-width:1280px){
+
+    
+
+
+    main{
+        flex-direction: row;
+        background-image: url(./images/bg-desktop.png);
+        background-color: $Very-Dark-Blue;
+        background-position: right bottom;
+        background-size: 100% 500px;
+        
+        
+    }
+
+    .access-tools{
+        width: 350px;
+        
+    }
+
+    .limition{
+        width: 700px;
+        height: 170px;
+        margin-top: 30px;
+        h4{
+            align-self: flex-start;
+        }
+
+
+        .quota{
+            top: -50px;
+            right: 40px;
+            border-bottom-right-radius: 0;
+            &::before{
+                content: '';
+                position: absolute;
+                clip-path: polygon(100% 0, 0 0, 100% 100%);
+                width: 30px;
+                height: 30px;
+                background-color: whitesmoke;
+                bottom: -20px;
+                right: 0;
+                
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+@keyframes left-to-right{
+    from{
+        opacity: 0;
+        transform: translateX(-500px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes right-to-left{
+    from{
+        opacity: 0;
+        transform: translateX(500px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
