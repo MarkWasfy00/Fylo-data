@@ -136,7 +136,10 @@ main{
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            
+            animation-name: scroll;
+            animation-duration: 3s;
+            transition: 500ms;
+            animation-timing-function: ease-in-out;
 
             .percentage-back-scroll{
                 width: 10px;
@@ -264,3 +267,13 @@ main{
     }
 }
 
+@keyframes scroll{
+    from{
+        width: 0%;
+
+    }
+
+    to{
+        width: 75%;
+    }
+}
